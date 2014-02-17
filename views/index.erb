@@ -1,0 +1,35 @@
+<h1>Latest Matches</h1>
+
+<% if @error %>
+	<p>Hm, there does not seem to be any matches yet. Start playing some!</p>
+<% else %>
+	<table>
+		<thead>
+			<tr>
+				<th>Game</th>
+				<th>Winner</th>
+				<th>Loser</th>
+				<th>Winning Score</th>
+				<th>Losing Score</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @matches.each do |match| %>
+				<td><a href="/games/<%= match['game'] %>"><%= match['game'] %></a></td>
+				<td><a href="/games/<%= match['winnerUsername'] %>"><%= match['winnerUsername'] %></a></td>
+				<td><a href="/games/<%= match['loserUsername'] %>"><%= match['loserUsername'] %></a></td>
+				<td>
+					<% if match['winnerScore'] %>
+						<%= match['winnerScore'] %>
+					<% end %>
+				</td>
+				<td>
+					<% if match['loserScore'] %>
+						<%= match['loserScore'] %>
+					<% end %>
+				</td>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

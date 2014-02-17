@@ -1,0 +1,6 @@
+Echelons UI
+
+/* Contributors */
+Creator: Oscar Sanchez
+Site: http://oscarsanchez.com
+Twitter: @oms1005

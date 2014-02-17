@@ -1,0 +1,23 @@
+<h1>Games</h1>
+
+<% if @error %>
+	<p>There does not seem to be any games in the collection. Make sure to create some</p>
+<% else %>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Phone Number</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @games.each do |game| %>
+				<tr>
+					<td><a href="/games/<%= game['name'] %>"><%= game['friendlyName']%></a></td>
+					<td><%= game['phone']%></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>

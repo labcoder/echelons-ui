@@ -1,0 +1,33 @@
+<h1>Users</h1>
+
+<% if @error %>
+	<p>There does not seem to be any users in the collection. Make sure to create some</p>
+<% else %>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Elos</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td>
+						<a href="/users/<%= user['username'] %>"><%= user['fullName'] %> (<%= user['username'] %>)</a>
+					</td>
+					<td>
+						<% if user['elos'] %>
+							<% user['elos'].each do |elo, score| %>
+								<strong><%= elo %></strong>: <%= score %><br />
+							<% end %>
+						<% else %>
+							<p>This player has not yet played a game. Default elo score for all games is <strong>1000</strong></p>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
